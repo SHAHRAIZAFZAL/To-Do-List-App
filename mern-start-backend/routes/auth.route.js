@@ -6,21 +6,7 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = "sherrySecretKey"; 
 
 
-router.post('/register', async (req, res) => {
-  const { name, email, password } = req.body;
-  try {
-    const userExist = await User.findOne({ email });
-    if (userExist) return res.status(400).json({ message: "User already exists" });
-
-    const newUser = new User({ name, email, password });
-    await newUser.save();
-
-    const token = jwt.sign({ userId: newUser._id }, JWT_SECRET, { expiresIn: '1h' });
-    res.status(201).json({ user: newUser, token });
-  } catch (err) {
-    res.status(500).json({ message: "Server error" });
-  }
-});
+router.post('/register', userSignup);
 
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
