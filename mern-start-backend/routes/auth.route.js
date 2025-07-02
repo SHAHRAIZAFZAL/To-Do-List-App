@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User');
+const User = require('./models/user.model');
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = "sherrySecretKey"; // 🔐 Ideally in .env
+const JWT_SECRET = "sherrySecretKey"; 
 
-// ✅ Register
+
 router.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
   try {
@@ -22,7 +22,6 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// ✅ Login
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
