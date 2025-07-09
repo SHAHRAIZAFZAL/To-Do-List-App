@@ -1,14 +1,9 @@
-const express = require('express');
+import express from "express";
+import { userSignup, userLogin } from "../controllers/auth.controller.js";
+
 const router = express.Router();
-const verifyToken = require('../middleware/auth');
-import { userSignup, userLogin } from '../controllers/auth.controller.js';
 
+router.post("/register", userSignup);
+router.post("/login", userLogin);
 
-const JWT_SECRET = "sherrySecretKey"; 
-
-
-router.post('/register', userSignup);
-
-router.post('/login', userLogin);
-
-module.exports = router;
+export default router;

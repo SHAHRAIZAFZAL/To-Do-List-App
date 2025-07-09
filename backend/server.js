@@ -19,5 +19,5 @@ app.use("/api/todo", todoRoutes);
 
 app.listen(PORT, () => {
   connectDB()
-  console.log("Server started on http://localhost:"+ PORT);
+  console.log("Server started on http://localhost:"+  PORT);
 });
